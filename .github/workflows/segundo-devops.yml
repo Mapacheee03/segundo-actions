@@ -31,13 +31,13 @@ jobs:
 
           # Comprobamos si el nombre cumple con la convención
           if echo "$BRANCH_NAME" | grep -Eq '^(feature/|bugfix/|hotfix/)'; then
-            echo "✅ Nombre de rama válido."
+            echo "Nombre de rama válido."
           else
             # Si no cumple, el job falla con exit 1
-            echo "❌ ERROR: El nombre de la rama no cumple con la convención."
+            echo "ERROR: El nombre de la rama no cumple con la convención."
             echo "Debe comenzar con uno de los siguientes prefijos:"
             echo "  - feature/"
             echo "  - bugfix/"
             echo "  - hotfix/"
             exit 1
-          fi
+                  fi
