@@ -1,21 +1,32 @@
+# Nombre del workflow que aparecerá en la interfaz de GitHub
 name: Push Branch Validator
 
+# Evento que activa el workflow
 on:
   push:
-    # Se ejecuta en push, pero ignora main y master
-    branches-ignore:
-      - main
-      - master
+    branches: [ main ]
 
+
+# Jobs que se ejecutarán
 jobs:
+  # Nombre del job
   validate-branch:
+    # Runner donde se ejecutará (Ubuntu)
     runs-on: ubuntu-latest
 
+    # Pasos que se ejecutarán en orden
     steps:
+      # Paso 1: Hacer checkout del repositorio (opcional si solo necesitamos la rama)
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      # Paso 2: Mostrar rama actual (para debug)
       - name: Mostrar rama actual
         run: |
-            echo "Rama actual: ${{ github.ref_name }}"
+          echo "=== Información de la rama ==="
+          echo "Rama actual: ${{ github.ref_name }}"
 
+      # Paso 3: Validar prefijo de nombre de rama
       - name: Validar prefijo de nombre de rama
         run: |
           BRANCH_NAME="${{ github.ref_name }}"
