@@ -4,7 +4,9 @@ name: Push Branch Validator
 # Evento que activa el workflow
 on:
   push:
-    branches: [ main ]
+    branches-ignore:
+      - main
+      - master
 
 
 # Jobs que se ejecutarán
